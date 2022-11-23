@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:storybook/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier",
+    "jest",
+    "jsx-a11y",
+    "simple-import-sort",
+    "unicorn",
+    "unused-imports"
+  ],
+  "rules": {
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "react/destructuring-assignment": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@next/next/no-img-element": "off",
+    "import/prefer-default-export": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+  }
+}
