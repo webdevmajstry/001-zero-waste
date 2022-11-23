@@ -80,6 +80,7 @@ Runs component and unit tests.
 | public          # publicly accessible assets
 | styles          # Next.js global style files
 | views           # domain-specific view wrapper components
+| third-party     # any external libraries and their configs
 ```
 
 ## Conventions
@@ -104,6 +105,10 @@ To summarize:
 > - `components` <u>cannot access</u> `features`, `views`, `pages` ❌
 > - `features` <u>cannot access</u> `views`, `pages` ❌
 > - `views` <u>cannot access</u> `pages` ❌
+
+#### The barrel pattern
+
+All components, views, features in this project must be exported using the [Barrel pattern](https://basarat.gitbook.io/typescript/main-1/barrel) in order to simplify imports and improve readability. Imports must use path aliases (eg. `import { Button } from '@components/Button'`) whenever they need to access something outside of their own access scope.
 
 ### Code review
 

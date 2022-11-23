@@ -1,5 +1,6 @@
-const { render, screen, fireEvent } = require('@testing-library/react');
-const { Button } = require('./Button');
+import { fireEvent, render, screen } from '@testing-library/react';
+
+import { Button } from './Button';
 
 describe('Button component', () => {
   it('renders Button', () => {
