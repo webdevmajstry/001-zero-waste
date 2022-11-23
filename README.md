@@ -23,6 +23,8 @@ List of most important packages:
 - Storybook
 - Husky
 
+It's recommended to install respective IDE extensions for Eslint and Prettier.
+
 ## Installation
 
 ### Dependencies
@@ -121,3 +123,7 @@ A review from at least two of the author's peers must be done. All Pull Request 
 Any new component must have component tests provided in a `*.test.js(x)` file placed next to the component. All of the tests must pass before merging new content to the `main` branch.
 
 Any new additions to the `components` folder must be reflected in a respective story in Storybook.
+
+### Reporting bugs
+
+In case you encounter a bug in the application, a fix for which lies out of scope of your current work - **DO NOT** attempt to solve it within your current task's work. Instead create an issue in Github repo **and** a ticket in JIRA so that someone else can pick it up when they're free.
