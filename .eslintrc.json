@@ -15,7 +15,11 @@
     "unused-imports"
   ],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": 
+    [ "error",
+      {
+        "endOfLine": "auto"}
+    ],
     "unicorn/filename-case": "off",
     "unicorn/prevent-abbreviations": "off",
     "jest/no-disabled-tests": "warn",
