@@ -1,2 +1,2 @@
-export const getMockedUrl = (route: string) =>
+export const getMockRoute = (route: string) =>
   `http://fake.backend/api/${route}`;

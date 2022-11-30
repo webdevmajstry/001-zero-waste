@@ -42,6 +42,10 @@ yarn install
 
 After the dependencies are installed, you're ready to start the development server using `yarn dev` or other scripts listed below.
 
+### Backend
+
+This repository's backend is mocked using [Mock Service Worker](https://msw.io/). Refer to the MSW's documentation in order to learn how to mock new backend features.
+
 ## Scripts
 
 ### `yarn dev`

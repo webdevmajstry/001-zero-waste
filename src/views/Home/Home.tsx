@@ -1,4 +1,4 @@
-import { getMockedUrl } from '@mocks/msw/utils';
+import { getMockRoute } from '@mocks/msw/utils';
 import FacebookIcon from '@svg/facebook.svg';
 import { useEffect, useState } from 'react';
 
@@ -7,7 +7,7 @@ export const Home = () => {
 
   useEffect(() => {
     // Request the mocked /api/test route and assign retrieved data to state variable
-    fetch(getMockedUrl('test?foo=bar'))
+    fetch(getMockRoute('test?foo=bar'))
       .then((res) => res.json())
       .then(({ foo }) => setBackendFoo(foo));
   }, []);

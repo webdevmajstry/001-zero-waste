@@ -1,4 +1,4 @@
-import { getMockedUrl } from '@mocks/msw/utils';
+import { getMockRoute } from '@mocks/msw/utils';
 import {
   DefaultBodyType,
   ResponseComposition,
@@ -23,4 +23,4 @@ export const TestApiMock = {
   },
 };
 
-export const testHandlers = [rest.get(getMockedUrl('test'), TestApiMock.test)];
+export const testHandlers = [rest.get(getMockRoute('test'), TestApiMock.test)];

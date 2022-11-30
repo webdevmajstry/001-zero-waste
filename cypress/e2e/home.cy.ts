@@ -1,12 +1,12 @@
 import { TestApiMock } from '@mocks/msw';
-import { getMockedUrl } from '@mocks/msw/utils';
+import { getMockRoute } from '@mocks/msw/utils';
 
 describe('Home page', () => {
   beforeEach(() => {
     // Create cypress-side request interceptor for /api/test* route
     cy.interceptRequest(
       'GET',
-      getMockedUrl('test*'),
+      getMockRoute('test*'),
       TestApiMock.test,
       'testRequest',
     );
