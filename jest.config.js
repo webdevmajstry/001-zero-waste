@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/prefer-module
 const nextJest = require('next/jest');
 
 const createJestConfig = nextJest({
@@ -13,7 +14,9 @@ const customJestConfig = {
     '^@components/(.*)$': '<rootDir>/components/$1',
     '^@features/(.*)$': '<rootDir>/features/$1',
     '^@views/(.*)$': '<rootDir>/views/$1',
+    '^@svg/(.*)$': '<rootDir>/svg/$1',
   },
 };
 
+// eslint-disable-next-line unicorn/prefer-module
 module.exports = createJestConfig(customJestConfig);
