@@ -13,5 +13,5 @@
       "@mocks/*": ["src/__mocks__/*"]
     },
   },
-  "include": ["../node_modules/cypress", "../node_modules/@testing-lirbary/cypress", "**/*.ts"]
+  "include": ["../node_modules/cypress", "../node_modules/@testing-library/cypress", "**/*.ts"]
 }
