@@ -8,5 +8,5 @@ export default {
 } as Meta<typeof Button>;
 
 export const Default = {
-  render: () => <Button />,
+  render: () => <Button>Click me</Button>,
 };

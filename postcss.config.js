@@ -1,7 +1,4 @@
-// eslint-disable-next-line unicorn/prefer-module
+/* eslint-disable unicorn/prefer-module */
 module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+  plugins: ['tailwindcss', 'autoprefixer'],
 };
