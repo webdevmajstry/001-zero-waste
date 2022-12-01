@@ -12,6 +12,14 @@ module.exports = {
         nextConfigPath: path.resolve(__dirname, '../next.config.js'),
       },
     },
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
   framework: '@storybook/react',
   core: {
@@ -19,19 +27,20 @@ module.exports = {
   },
   webpackFinal: function (config) {
     config.module.rules = [
-      ...config.module.rules.map(rule => {
+      ...config.module.rules.map((rule) => {
         if (/svg/.test(rule.test)) {
           // Silence the Storybook loaders for SVG files
-          return { ...rule, exclude: /\.svg$/i }
+          return { ...rule, exclude: /\.svg$/i };
         }
-        return rule
+        return rule;
       }),
       // Add your custom SVG loader
       {
         test: /\.svg$/i,
-        use: ['@svgr/webpack']
-      }
+        use: ['@svgr/webpack'],
+      },
     ];
+
     return config;
   },
 };
