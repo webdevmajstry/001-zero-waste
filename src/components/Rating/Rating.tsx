@@ -22,7 +22,7 @@ export const Rating = (props: RatingProps) => {
           const isActive = index + 1 <= rate;
           const iconClasses = clsx(
             isActive && 'mx-px',
-            isHidden && 'hidden',
+            isHidden && !isActive && 'hidden',
             !isActive && !isHidden && 'opacity-50',
           );
           return (
