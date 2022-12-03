@@ -36,6 +36,6 @@ export default {
     }
   } as Meta;
 
-const Template: Story = (args) => <Rating rate={0} {...args}/>
+const Template: Story = (args) => <Rating {...args}/>
 
 export const BasicRating = Template.bind({})

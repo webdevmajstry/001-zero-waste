@@ -1,39 +1,48 @@
-import Heart from '@svg/heart.svg'
-import Stars from '@svg/star.svg'
+import clsx from 'clsx';
+import Heart from '@svg/heart.svg';
+import Stars from '@svg/star.svg';
 
-export type RatingProps = { variant?: string; type?: string; rate: number };
+export type RatingProps = {
+  variant?: 'hearts' | 'stars';
+  type?: 'number' | 'default' | 'hidden';
+  rate: number;
+};
 
 export const Rating = (props: RatingProps) => {
-  const { variant , type = 'default', rate } = props;
-
+  const { variant = 'hearts', type = 'default', rate } = props;
+  if (rate <= 0) return null;
   return (
-    <>
-    {rate>0?<div key={`${type}${variant}${rate}`} className="flex items-center">
-      {[...Array(type === 'number' ? 1 : rate<=0?0:5)].map(
+    <div
+      key={type + variant + rate * Math.random()}
+      className="flex items-center"
+    >
+      {[...Array(type === 'number' ? 1 : 5)].map(
         (el, index) => {
+          const isHidden = type === 'hidden';
+          const isActive = index + 1 <= rate;
+          const iconClasses = clsx(
+            isActive && 'mx-px',
+            isHidden && 'hidden',
+            !isActive && !isHidden && 'opacity-50',
+          );
           return (
             <>
-            {variant==='hearts'?<Heart key={`rate${variant}${Math.random()}`}
-              className={
-                index + 1 <= rate
-                  ? 'mx-px'
-                  : type === 'hidden'
-                  ? 'hidden'
-                  : 'mx-px opacity-50'
-              }/>:<Stars key={`rate${variant}${Math.random()}`}
-              className={
-                index + 1 <= rate
-                  ? 'mx-px'
-                  : type === 'hidden'
-                  ? 'hidden'
-                  : 'mx-px opacity-50'
-              }/>}
+              {variant === 'hearts' ? (
+                <Heart
+                  key={`rate${variant}${Math.random()}`}
+                  className={iconClasses}
+                />
+              ) : (
+                <Stars
+                  key={`rate${variant}${Math.random()}`}
+                  className={iconClasses}
+                />
+              )}
             </>
           );
         },
       )}
-      {type === 'number' ? <span>{rate}</span> : null}
-    </div>:null}
-    </>
+      {type === 'number' && <span>{rate}</span>}
+    </div>
   );
 };
