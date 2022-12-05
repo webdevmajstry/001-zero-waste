@@ -34,7 +34,7 @@ export const Card = ({
   }
 
   return (
-    <div className="w-52 rounded-lg h-64 shadow-md">
+    <div data-testid="test-card" className="w-52 rounded-lg h-64 shadow-md">
       <div className="relative h-40 w-full rounded-t-lg">
         <Image
           src={picture || DefaultImage}
