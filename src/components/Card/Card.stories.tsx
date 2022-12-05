@@ -12,7 +12,7 @@ export default {
       },
       defaultValue: 'Modern Picture',
     },
-    optionalPicture: {
+    picture: {
       type: {
         name: 'string',
       },
