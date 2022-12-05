@@ -1,3 +1,7 @@
+import FacebookIcon from '@svg/facebook.svg';
+
 export const Home = () => (
-  <h1 className="text-xl font-black text-primary-500">Hello World!</h1>
+  <div className="w-20 h-24 border-primary-500 border-2">
+    <FacebookIcon />
+  </div>
 );

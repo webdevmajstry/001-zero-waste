@@ -1,11 +1,11 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:storybook/recommended",
     "prettier",
     "plugin:jsx-a11y/recommended",
     "plugin:unicorn/recommended"
   ],
+  "ignorePatterns": ["node_modules/**"],
   "plugins": [
     "prettier",
     "jest",
@@ -15,11 +15,9 @@
     "unused-imports"
   ],
   "rules": {
-    "prettier/prettier": 
-    [ "error",
-      {
-        "endOfLine": "auto"}
-    ],
+    "prettier/prettier": ["error", {
+      "endOfLine": "auto"
+    }],
     "unicorn/filename-case": "off",
     "unicorn/prevent-abbreviations": "off",
     "jest/no-disabled-tests": "warn",
