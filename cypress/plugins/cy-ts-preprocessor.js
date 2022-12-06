@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/prefer-module */
 const path = require('node:path');
 
-const webpackOptions = {
+export const webpackOptions = {
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
