@@ -1,12 +1,29 @@
-import { Meta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 
 import { Button } from './Button';
 
 export default {
   title: 'Button',
   component: Button,
-} as Meta<typeof Button>;
+  argTypes: {
+    children: {
+      defaultValue: 'Zaloguj sie',
+      name: 'text inside button',
+      type: {
+        name: 'string',
+      },
+    },
+    variant: {
+      options: ['small', 'default', 'large'],
+      control: { type: 'radio' },
+      defaultValue: 'default',
+      type: {
+        name: 'string',
+      },
+    },
+  },
+} as Meta;
 
-export const Default = {
-  render: () => <Button>Click me</Button>,
-};
+const Template: Story = (args) => <Button {...args} />;
+
+export const BasicButton = Template.bind({});
