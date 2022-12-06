@@ -11,10 +11,10 @@ const customJestConfig = {
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '^@components/(.*)$': '<rootDir>/components/$1',
-    '^@features/(.*)$': '<rootDir>/features/$1',
-    '^@views/(.*)$': '<rootDir>/views/$1',
-    '^@svg/(.*)$': '<rootDir>/svg/$1',
+    '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@features/(.*)$': '<rootDir>/src/features/$1',
+    '^@views/(.*)$': '<rootDir>/src/views/$1',
+    '^.+\\.(svg)$': '<rootDir>/src/__mocks__/componentMock.js',
   },
 };
 
