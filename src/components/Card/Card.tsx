@@ -40,7 +40,7 @@ export const Card = ({
           src={picture || DefaultImage}
           className="rounded-t-lg"
           fill
-          alt={'default photo'}
+          alt={picture ? 'some alt text' : 'default alt text'}
         />
       </div>
       <div className="flex flex-col py-2 px-4">
