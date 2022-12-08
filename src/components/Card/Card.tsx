@@ -22,7 +22,7 @@ export const Card = ({
   footer,
 }: CardProps) => {
   return (
-    <>
+    <div data-testid="test-card">
       {heading ? (
         <div className="rounded-lg h-64 w-72 shadow-md p-8">
           <div className="flex flex-col justify-between h-full">
@@ -33,7 +33,7 @@ export const Card = ({
         </div>
       ) : (
         <div className="w-52 rounded-lg h-64 shadow-md">
-          <div className="relative h-40 w-full rounded-t-lg">
+          <div className="relative fh-40 w-full rounded-t-lg">
             {optionalPicture ? (
               <Image
                 src={optionalPicture}
@@ -61,6 +61,6 @@ export const Card = ({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
