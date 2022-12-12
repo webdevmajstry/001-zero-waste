@@ -1,5 +1,5 @@
-import { authHandlers, AuthApiMock } from './api/auth';
-import { testHandlers, TestApiMock } from './api/test';
+import { AuthApiMock, authHandlers } from './api/auth';
+import { TestApiMock, testHandlers } from './api/test';
 
 export const handlers = [...testHandlers, ...authHandlers];
 
