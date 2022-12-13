@@ -1,5 +1,6 @@
-import { Errors } from '@features/auth';
+import { Errors, User } from '@features/auth';
 import { getMockRoute } from '@mocks/msw/utils';
+import { generateToken } from '@mocks/msw/utils/jwt';
 import { userStorage } from '@mocks/msw/utils/userStorage';
 import {
   DefaultBodyType,
@@ -8,6 +9,11 @@ import {
   RestContext,
   RestRequest,
 } from 'msw';
+
+const tokenNames = {
+  accessToken: 'access-token',
+  refreshToken: 'refresh-token',
+};
 
 type RegisterBody = DefaultBodyType & {
   username: string;
@@ -38,12 +44,13 @@ export const RegisterApiMock = {
       );
     }
 
+    const token = generateToken(foundUser.uuid);
+
     return res(
       ctx.status(201),
+      ctx.cookie(tokenNames.accessToken, token),
       ctx.json({
-        name,
-        email,
-        password,
+        accessToken: token,
       }),
     );
   },
