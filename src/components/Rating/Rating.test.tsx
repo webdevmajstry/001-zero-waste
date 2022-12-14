@@ -36,6 +36,6 @@ describe('Rating Component',()=>{
     })
     it('Not rendering', ()=>{
         render(<Rating rate={0}/>)
-        expect(screen.queryAllByTestId('rating container')).toBeNull
+        expect(screen.queryByTestId("rating container")).toBeFalsy()
     })
 })
