@@ -1,43 +1,31 @@
-import React from 'react'
+import React, { HTMLInputTypeAttribute } from 'react';
 
-export type Props = {
-
-  labelText?: string,
-  placeholder?: string,
-  className?: string,
-  value?: string,
-  name?: string,
-  htmlFor?: string,
-  /**
-   * Callback for Input
-   */
-  onChangeInput: any,
-  text?: string,
-  helperText?: string,
+interface CustomInputProps {
+    label: string;
+    placeholder: string;
+    required?: boolean;
+    type?: HTMLInputTypeAttribute;
+    value: string;
+    onChange: (value: string) => void;
 }
 
-export function Input({labelText, placeholder='', className='', value='', name='', htmlFor='',helperText='', onChangeInput}:Props) {    
-    return (
-        <div>
-            <label className='text-text-01-normal font-medium text-sm leading-5'>
-                {labelText}
-            </label>
-            <div className="relative">
-                <input
-                    id={htmlFor}
-                    className={[
-                        "relative w-64 pl-3 h-8 py-2 border rounded bg-ui-03 border-ui-06 text-text-01-normal leading-5 text-sm text-left hover:bg-ui-03 hover:border-ui-07 focus:bg-ui-03 focus:outline-none focus:border-interactive-01-active active:bg-ui-03",                        
-                        className
-                        ].join(' ')} 
-                    placeholder={placeholder}
-                    value={value}
-                    name={name}
-                    onChange={ (e) => { onChangeInput(e.target.value) }}
-                />
-            </div>
-            <p className='text-text-01-normal font-medium text-sm leading-5'>
-                {helperText}
-            </p>
-        </div>
-    )
-}   
+export const Input = (props: CustomInputProps): JSX.Element => {
+    function checkRequired(): JSX.Element {
+        if (props.required) {
+            return <div></div>}
+        return <>
+        </>
+        ;
+    }
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+        props.onChange(event.target.value);
+    }
+
+    return <div className="flex text-dark-500 flex-col py-2 px-4"> {props.label}
+    {checkRequired()} <input type={props.type} value={props.value} placeholder={props.placeholder} onChange={handleChange}/>
+    <div className="flex text-primary-300 flex-col py-2 px-1">This is required field</div>
+    </div>
+    ;
+}
+
+export default Input;
