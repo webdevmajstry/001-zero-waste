@@ -1,36 +1,26 @@
-import React, { useState } from 'react';
-import { Story, Meta } from '@storybook/react';
-import { Input, Props } from './Input';
+import { Meta, Story } from '@storybook/react';
+
+import { Input } from './Input';
 
 export default {
-  title: 'General/Input',
+  title: 'Input',
   component: Input,
+  argTypes: {
+    label: {
+      type: {
+        name: 'string',
+      },
+      defaultValue: 'label',
+    },
+    placeholder: {
+      type: {
+        name: 'string',
+      },
+      defaultValue: 'placeholder',
+    },
+  },
 } as Meta;
 
-const Template: Story<Props> = () => {    
-    const [localValue, setValue] = useState<string>('');
-    const onChangeInput = (inputValue: string) => {
-        setValue(inputValue);
-    }
-    return (
-        <><Input
-            labelText='Label'
-            placeholder='Placeholder'
-            className='test-class-name'
-            name='test-name'
-            value={localValue}
-            htmlFor='test-for'
-            onChangeInput={onChangeInput}
-            helperText='This is helperText'
-            />
-        </>
+const Template: Story = (args) => <Input {...args} />;
 
-    )
-}
-
-export const Default: Story<Props> = Template.bind({});
-Default.parameters = {
-  design: {
-    url: ''
-  }
-}
+export const InputComponent = Template.bind({});
