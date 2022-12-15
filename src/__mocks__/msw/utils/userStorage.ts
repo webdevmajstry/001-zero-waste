@@ -1,4 +1,4 @@
-import { ApiUser } from "../handlers/types/user";
+import { ApiUser } from '../handlers/types/user';
 
 const USERS_STORAGE_KEY = 'db#users';
 
@@ -12,7 +12,7 @@ const defaultUsers: ApiUser[] = [
 ];
 
 if (!localStorage.getItem(USERS_STORAGE_KEY)) {
-  localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(defaultUsers))
+  localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(defaultUsers));
 }
 
 const createUserStorage = (): {
@@ -21,8 +21,10 @@ const createUserStorage = (): {
   getUser: (userId: string) => null | ApiUser;
   removeUser: (userId: string) => null | ApiUser;
 } => {
-  let users: ApiUser[] = JSON.parse(localStorage.getItem(USERS_STORAGE_KEY) as string);
-  
+  let users: ApiUser[] = JSON.parse(
+    localStorage.getItem(USERS_STORAGE_KEY) as string,
+  );
+
   return {
     addUser(user) {
       users.push(user);
@@ -48,7 +50,7 @@ const createUserStorage = (): {
       localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
       return user;
     },
-  }
+  };
 };
 
 export const userStorage = createUserStorage();

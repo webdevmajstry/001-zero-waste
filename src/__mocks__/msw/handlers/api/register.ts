@@ -1,5 +1,4 @@
-import { Errors, User } from '@features/auth';
-import { getMockRoute } from '@mocks/msw/utils';
+import { Errors } from '@features/auth';
 import { generateToken } from '@mocks/msw/utils/jwt';
 import { userStorage } from '@mocks/msw/utils/userStorage';
 import {
@@ -12,39 +11,41 @@ import {
 
 const tokenNames = {
   accessToken: 'access-token',
-  refreshToken: 'refresh-token',
 };
 
-type RegisterBody = DefaultBodyType & {
-  username: string;
+type RegisterPostBody = DefaultBodyType & {
+  uuid: string;
   email: string;
   password: string;
+  username: string;
 };
 
 export const RegisterApiMock = {
-  //Post /api/auth/register
+  // POST https://localhost:3000/auth/register
 
   async register(
-    req: RestRequest<RegisterBody>,
+    req: RestRequest<RegisterPostBody>,
     res: ResponseComposition<DefaultBodyType>,
     ctx: RestContext,
   ) {
-    const { name, email, password } = await req.json();
+    const newUser = await req.json();
 
-    const foundUser = userStorage
+    const existingUserEmail = userStorage
       .getAllUsers()
-      .find((item) => item.email === email);
+      .find((user) => user.email === newUser.email);
 
-    if (foundUser) {
+    if (existingUserEmail) {
       return res(
-        ctx.status(401),
+        ctx.status(400),
         ctx.json({
           message: Errors.EmailIsRepeated,
         }),
       );
     }
 
-    const token = generateToken(foundUser.uuid);
+    userStorage.addUser(newUser);
+
+    const token = generateToken(newUser.uuid);
 
     return res(
       ctx.status(201),
@@ -57,5 +58,5 @@ export const RegisterApiMock = {
 };
 
 export const registerHandlers = [
-  rest.post(getMockRoute('auth/register'), RegisterApiMock.register),
+  rest.post('https://localhost:3000/auth/register', RegisterApiMock.register),
 ];
